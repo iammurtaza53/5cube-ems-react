@@ -1,15 +1,12 @@
-import { STATE_LOGIN, STATE_SIGNUP } from 'components/AuthForm';
 import GAListener from 'components/GAListener';
 import { EmptyLayout, LayoutRoute, MainLayout } from 'components/Layout';
 import PageSpinner from 'components/PageSpinner';
-// import AuthPage from 'pages/AuthPage';
 import LoginPage from 'pages/LoginPage';
 import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import ProtectedRoute from 'components/ProtectedRoute';
 import ProtectedRoute from "components/ProtectedRoute"
 
 // const AlertPage = React.lazy(() => import('pages/AlertPage'));

@@ -4,6 +4,7 @@ import Row from 'reactstrap/lib/Row';
 import { MdEdit } from 'react-icons/md';
 import EditPayroll from '../components/EditPayroll';
 import 'jquery/dist/jquery.min.js';
+import '../styles/App.scss';
 
 //Datatable Modules
 import 'datatables.net-dt/js/dataTables.dataTables';
@@ -32,11 +33,11 @@ export default function payrollPage() {
     try {
       const response = await fetch(url);
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
       setPayroll(json);
-      console.log('payroll', payroll);
+      // console.log('payroll', payroll);
     } catch (error) {
-      console.log('error', error);
+      // console.log('error', error);
     }
   };
 
@@ -72,7 +73,7 @@ export default function payrollPage() {
               </thead>
               <tbody>
                 {payroll.map((payroll, index) => {
-                  // console.log(payroll,"hereeeeeeeeeeeeeeeee")
+               
                   return (
                     <tr>
                       <th scope="row">{index + 1}</th>
@@ -112,4 +113,3 @@ export default function payrollPage() {
   );
 }
 
-//initialize datatable

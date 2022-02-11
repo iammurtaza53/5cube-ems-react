@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from 'react';
+import React,{useState } from 'react';
 
 
 import {
@@ -14,33 +14,23 @@ export default function Login() {
     const [username, setUsername] = useState([]);
     const [password, setPassword] = useState([]);
     const [currentUser, setCurrentUser] = useState([]);
-   
-    // console.log(currentUser,"GGGGG")
-    // const currentuser = users.find(user => user.username===username && user.password===password);
-
-    
-    // console.log("logged in",currentuser)
-
-
 const handleSubmit = ()=>{
     const uploadData = new FormData();
     uploadData.append('username', username);
     uploadData.append('password', password);
     const session_token = window.localStorage.getItem('access_token')
-    // setCurrentUser(currentUser)
 
     if(session_token){
-        console.log('your are already logged in')
+        // console.log('your are already logged in')
         window.location.pathname = "/employees"
     }
     
     else{
       var users =  fetch('https://fivecube-ems-backend.herokuapp.com/employee/users/')
       .then(() => {
-        console.log('usseerr' , users)
-        // setCurrentUser(users.filter(user => user.username===username && user.password===password));
+        // console.log('usseerr' , users)
       });
-      console.log('usseerr' , currentUser)
+      // console.log('usseerr' , currentUser)
       if (currentUser){
         fetch('https://fivecube-ems-backend.herokuapp.com/token/', {
           method: 'POST',
@@ -49,8 +39,8 @@ const handleSubmit = ()=>{
         .then(response => response.json())
     
           .then(data => {
-            console.log('Success:', data['access']);
-            console.log('LoginSuccess');
+            // console.log('Success:', data['access']);
+            // console.log('LoginSuccess');
             window.localStorage.setItem('access_token', data['access'])
             window.location.pathname = "/employees"
           });
@@ -58,7 +48,7 @@ const handleSubmit = ()=>{
       }
 
       else{
-        console.log('user does not exist')
+        // console.log('user does not exist')
         window.location.pathname = "/login"
       }
        

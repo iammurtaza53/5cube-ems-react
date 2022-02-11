@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter ,
-  Col, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
+  Col, Form, FormGroup, Label, Input} from 'reactstrap';
 
 class ModalExample extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ submitForm(){
       'Content-type':'application/json; charset=UTF-8',
     },
   });
-    console.log('form has been submitted')
+    // console.log('form has been submitted')
 }
 
   render() {

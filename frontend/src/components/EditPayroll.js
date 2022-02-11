@@ -12,14 +12,9 @@ import {
   ModalHeader,
 } from 'reactstrap';
 
-import { MdEdit } from 'react-icons/md';
 export default function EditPayroll(props) {
-    // console.log(props, "propssssss")
-  // fetch employees data
   const [payroll, setPayroll] = useState([]);
-  
 
-  
   useEffect(() => {
     const url = 'https://fivecube-ems-backend.herokuapp.com/payroll/payroll/';
 
@@ -29,7 +24,7 @@ export default function EditPayroll(props) {
         const json = await response.json();
         setPayroll(json.results);
       } catch (error) {
-        console.log('error', error);
+        // console.log('error', error);
       }
     };
 
@@ -44,19 +39,14 @@ export default function EditPayroll(props) {
   const [last_increment_date, setLastIncrementDate] = useState(props.payroll.last_increment_date);
   const [last_salary_release_date, setLastSalaryReleaseDate] = useState(props.payroll.last_salary_release_date);
   const [modalIsOpen, setModalIsOpen] = useState(true);
-  const setModalIsOpenToTrue = () => {
-    setModalIsOpen(true);
-  };
+
   const setModalIsOpenToFalse = () => {
     setModalIsOpen(false);
   };
 
   const editForm = (id) => {
-    console.log(id, "iiiiiididdd")
-    console.log('i got calleddd')
-    console.log(allowance)
+    
     const uploadData = new FormData();
-    console.log(allowance, "dataaaaaa")
     uploadData.append('first_name', firstName);
     uploadData.append('last_name', lastName);
     uploadData.append('basic_pay', basic_pay);
@@ -65,47 +55,27 @@ export default function EditPayroll(props) {
     uploadData.append('last_increment_date', last_increment_date);
     uploadData.append('last_salary_release_date', last_salary_release_date);
     
-    
-
     fetch('https://fivecube-ems-backend.herokuapp.com/payroll/payroll/' + id + '/', {
       method: 'PUT',
 
-      // headers:{
-      //   'content-type': 'multipart/form-data ;boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
-      //   // 'Accept': "application/json",
-      //   // "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" ,
-      // },
       body: uploadData,
-
-      //     body: JSON.stringify({"first_name":firstName,"last_name":lastName,"email":email,'password':password,
-      //   'designation':designation,'cnic':cnic,'address':address,'contact':contact,
-      // 'joining_date':joining_date,'status':status,'salary':salary,'profile_picture_path':image}),
-    })
+})
       .then(response => response.json()
       )
 
       .then(data => {
-        console.log('Success:', data);
-        console.log('data submitted');
+        // console.log('Success:', data);
+        // console.log('data submitted');
         setModalIsOpenToFalse();
         props.payrollList(payroll)
         props.closeModal(false)
       });
-    // .then (res =>console.log(res))
-    // .catch(error =>console.log(error))
-    // console.log('form has been submitted');
-    // console.log(firstName);
-    // console.log(lastName);
+
     };
 
   return (
     <>
-      <div className="container mb-3">
-        {/* <Button onClick={setModalIsOpenToTrue} style= {{float:"right"}}>Add Employee</Button> */}
-        {/* <Button onClick={setModalIsOpenToTrue}>
-          <MdEdit></MdEdit>
-        </Button> */}
-        
+      <div className="container mb-3">    
           <Modal isOpen={modalIsOpen}>
           <ModalHeader>Modal title</ModalHeader>
           <ModalBody>

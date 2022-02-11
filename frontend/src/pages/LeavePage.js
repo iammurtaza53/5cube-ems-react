@@ -29,11 +29,11 @@ export default function LeavePage() {
       const url = 'https://fivecube-ems-backend.herokuapp.com/leaves/leave/';
       const response = await fetch(url);
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
       setLeave(json);
-      console.log('leave', leave);
+      // console.log('leave', leave);
     } catch (error) {
-      console.log('error', error);
+      // console.log('error', error);
     }
   };
 
@@ -105,9 +105,9 @@ export default function LeavePage() {
               </thead>
               <tbody>
                 {leave.map((leave, index) => {
-                  console.log(leave.first_name);
-                  console.log(leave.employee);
-                  console.log('asdas', leave);
+                  // console.log(leave.first_name);
+                  // console.log(leave.employee);
+                  // console.log('asdas', leave);
                   return (
                     <tr>
                       <th scope="row">{index + 1}</th>

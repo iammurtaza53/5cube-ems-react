@@ -5,6 +5,7 @@ import { MdDelete, MdEdit } from 'react-icons/md';
 import AddEmployee from '../components/AddEmployee';
 import EditEmployee from '../components/EditEmployee';
 import 'jquery/dist/jquery.min.js';
+import '../styles/App.scss';
 
 //Datatable Modules
 import 'datatables.net-dt/js/dataTables.dataTables';
@@ -32,11 +33,11 @@ export default function EmployeePage() {
     try {
       const response = await fetch(url);
       const json = await response.json();
-      console.log(json, 'json');
+      // console.log(json, 'json');
       setEmployees(json);
-      console.log(json.results, 'asadasd')
+      // console.log(json.results, 'asadasd')
     } catch (error) {
-      console.log('error', error);
+      // console.log('error', error);
       // console.log(employees, "emppppppppppppppppppppp")
     }
   };
@@ -89,12 +90,10 @@ export default function EmployeePage() {
                     .split('/')
                     .splice(-2)
                     .join('/');
-                  // console.log('URL', employee.profile_picture.split('/').splice(-2).join('/'))
-                  // let url = employee.profile_picture_path
+                 
                   return (
                     <tr>
                       <th scope="row">{index + 1}</th>
-                      {/* <td><img width="80" height="65" src="/{ BASIC_DIR }/{employee.profile_picture}" /></td> */}
                       <td>
                         <img width="80" height="65" src={url} />
                       </td>
@@ -104,7 +103,6 @@ export default function EmployeePage() {
                       <td>{employee.email}</td>
 
                       <td>
-                        {/* <EditEmployee id={employee.id}></EditEmployee> */}
                         <button
                           className="btn btn-outline-warning"
                           onClick={() => handleUpdate(employee)}

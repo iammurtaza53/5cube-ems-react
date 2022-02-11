@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import { useHistory } from "react-router-dom";
-// import {useHistory} from 'react-router-dom';
+
 import {
   Button,
   Form,
@@ -14,15 +13,11 @@ import {
   ModalHeader,
 } from 'reactstrap';
 
-import { MdEdit } from 'react-icons/md';
-import EmployeePage from '../pages/EmployeePage';
 export default function EditEmployee(props) {
-    // console.log(props, "propssssss",props.emp.first_name)
-  // fetch employees data
+ 
   const [employees, setEmployees] = useState([]);
-  const session_token = window.localStorage.getItem('access_token')
-  // const history = useHistory();
-    
+  // const session_token = window.localStorage.getItem('access_token')
+
   useEffect(() => {
     
     fetchData();
@@ -36,17 +31,10 @@ export default function EditEmployee(props) {
         const json = await response.json();
         setEmployees(json);
       } catch (error) {
-        console.log('error', error);
+        // console.log('error', error);
       }
     };
-//   let name = props.id.first_name
-//   console.log('nameee',name)
-  // filter out the employee according the id provided
-//   let employee = employees.find(emp => emp.id == props.id);
-  // let emp =JSON.parse(employee)
-//   console.log(employee, 'employeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
-  // console.log(emp, "employeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-  // set state of form empty
+
   const [firstName, setFirstName] = useState(props.emp.first_name);
   const [lastName, setLastName] = useState(props.emp.last_name);
   const [email, setEmail] = useState(props.emp.email);
@@ -60,10 +48,7 @@ export default function EditEmployee(props) {
   const [salary, setSalary] = useState(props.emp.salary);
   const [image, setImage] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(true);
-  // console.log("fff",firstName)
-  const setModalIsOpenToTrue = () => {
-    setModalIsOpen(true);
-  };
+
   const setModalIsOpenToFalse = () => {
     setModalIsOpen(false);
   };
@@ -91,38 +76,24 @@ export default function EditEmployee(props) {
 
     
       body: uploadData,
-
-      //     body: JSON.stringify({"first_name":firstName,"last_name":lastName,"email":email,'password':password,
-      //   'designation':designation,'cnic':cnic,'address':address,'contact':contact,
-      // 'joining_date':joining_date,'status':status,'salary':salary,'profile_picture_path':image}),
     })
       .then(response => response.json()
       )
 
       .then(data => {
-        console.log('Success:', data);
-        console.log('data submitted');
+        // console.log('Success:', data);
+        // console.log('data submitted');
         setModalIsOpenToFalse();
         props.empList(employees)
         props.closeModal(false)
-        // history.push("/employees");
-        // history.go(0)
+       
       });
-    // .then (res =>console.log(res))
-    // .catch(error =>console.log(error))
-    console.log('form has been submitted');
-    console.log(firstName);
-    console.log(lastName);
+
   };
 
   return (
     <>
-      <div className="container mb-3">
-        {/* <Button onClick={setModalIsOpenToTrue} style= {{float:"right"}}>Add Employee</Button> */}
-        {/* <Button onClick={setModalIsOpenToTrue}>
-          <MdEdit></MdEdit>
-        </Button> */}
-        
+      <div className="container mb-3">    
           <Modal isOpen={modalIsOpen}>
           <ModalHeader>Modal title</ModalHeader>
           <ModalBody>

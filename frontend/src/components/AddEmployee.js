@@ -14,7 +14,6 @@ import {
 
 export default function AddEmployee(props) {
   const [employees, setEmployees] = useState([]);
-  // const history = useHistory();
     
   useEffect(() => {
     
@@ -29,7 +28,7 @@ export default function AddEmployee(props) {
         const json = await response.json();
         setEmployees(json);
       } catch (error) {
-        console.log('error', error);
+        // console.log('error', error);
       }
     };
   const [firstName, setFirstName] = useState('');
@@ -46,20 +45,14 @@ export default function AddEmployee(props) {
   const [image, setImage] = useState(null);
 
   const [modalIsOpen, setModalIsOpen] = useState(true);
-  console.log('fff', firstName);
-
-  const setModalIsOpenToTrue = () => {
-    setModalIsOpen(true);
-  };
+  
   const setModalIsOpenToFalse = () => {
     setModalIsOpen(false);
     props.closeModal2(false)
   };
-  // console.log('Imageee', image['name'])
-  // let image_x = image['name']
-  // let image_path = image.split('\\').splice(-1)
+
   const submitForm = () => {
-    console.log(image);
+    // console.log(image);
     const uploadData = new FormData();
     uploadData.append('first_name', firstName);
     uploadData.append('last_name', lastName);
@@ -79,40 +72,23 @@ export default function AddEmployee(props) {
     fetch('https://fivecube-ems-backend.herokuapp.com/employee/employees/', {
       method: 'POST',
 
-      // headers:{
-      //   'content-type': 'multipart/form-data ;boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
-      //   // 'Accept': "application/json",
-      //   // "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" ,
-      // },
       body: uploadData,
-
-      //     body: JSON.stringify({"first_name":firstName,"last_name":lastName,"email":email,'password':password,
-      //   'designation':designation,'cnic':cnic,'address':address,'contact':contact,
-      // 'joining_date':joining_date,'status':status,'salary':salary,'profile_picture_path':image}),
     })
       .then(response => response.json())
 
       .then(data => {
-        console.log('Success:', data);
-        console.log('data submitted');
+       
         setModalIsOpenToFalse();
         props.empList(employees)
         props.closeModal2(false)
       });
-    // .then (res =>console.log(res))
-    // .catch(error =>console.log(error))
-    console.log('form has been submitted');
-    console.log(firstName);
-    console.log(lastName);
+ 
   };
 
   return (
     <>
       <div className="container mb-3">
-        {/* <Button onClick={setModalIsOpenToTrue} style={{ float: 'right' }}>
-          Add Employee
-        </Button> */}
-
+  
         <Modal isOpen={modalIsOpen}>
           <ModalHeader>Modal title</ModalHeader>
           <ModalBody>

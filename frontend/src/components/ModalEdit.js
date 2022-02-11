@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter ,
-  Col, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
+  Col, Form, FormGroup, Label, Input} from 'reactstrap';
   import { FaEdit } from "react-icons/fa";
 
 class ModalExample extends React.Component {
-  constructor(props,theEmployee) {
+  constructor(props) {
     super(props);
     this.state = {
       modal: false,
@@ -13,7 +13,7 @@ class ModalExample extends React.Component {
         email:'',
         
     };
-    console.log(this.props.theEmployee)
+    // console.log(this.props.theEmployee)
     this.changeHandler=this.changeHandler.bind(this);
     this.submitForm=this.submitForm.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -21,7 +21,7 @@ class ModalExample extends React.Component {
   
   fetchData(){
     var id=this.props.id;
-    console.log("iddd",id)
+    // console.log("iddd",id)
     fetch('https://fivecube-ems-backend.herokuapp.com/employee/'+id)
     .then(response=>response.json())
     .then((data)=>{
@@ -60,7 +60,7 @@ submitForm(){
       'Content-type':'application/json; charset=UTF-8',
     },
   });
-    console.log('form has been submitted')
+    // console.log('form has been submitted')
 }
 
   render() {

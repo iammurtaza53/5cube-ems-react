@@ -5,12 +5,11 @@ import {
   CardHeader,
   CardBody,
   Col,
-  Button,
-  Input,
 } from 'reactstrap';
 import Row from 'reactstrap/lib/Row';
-import { MdSend, MdSnooze } from 'react-icons/md';
+import { MdSend} from 'react-icons/md';
 import 'jquery/dist/jquery.min.js';
+import '../styles/App.scss';
  
 //Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables"
@@ -35,10 +34,10 @@ export default function EmployeePage() {
         const url = 'https://fivecube-ems-backend.herokuapp.com/leaves/employeeDropdown/';
         const response = await fetch(url);
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         setEmployees(json);
       } catch (error) {
-        console.log('error', error);
+        // console.log('error', error);
       }
     };
     fetchData();
@@ -59,7 +58,7 @@ export default function EmployeePage() {
       // console.log(json);
       setCurrentAttendance(json);
     } catch (error) {
-      console.log('error', error);
+      // console.log('error', error);
     }
   };
 
@@ -110,7 +109,7 @@ export default function EmployeePage() {
           .then(fetchData())
           .catch(error => console.log(error));
       }
-    console.log('record existssss')
+    // console.log('record existssss')
     }
   };
   
@@ -139,7 +138,7 @@ export default function EmployeePage() {
               </thead>
               <tbody>
                 {employees.map((employee, index) => {
-                  console.log('data', employee);
+                  // console.log('data', employee);
                   let url = ' https://fivecube-ems-backend.herokuapp.com/' + employee.profile_picture_path
                     .split('/')
                     .splice(-2)

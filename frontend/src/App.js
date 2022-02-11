@@ -3,7 +3,7 @@ import PageSpinner from 'components/PageSpinner';
 import LoginPage from 'pages/LoginPage';
 import React from 'react';
 import componentQueries from 'react-component-queries';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import ProtectedRoute from 'components/ProtectedRoute';

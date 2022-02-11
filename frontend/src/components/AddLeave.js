@@ -14,11 +14,11 @@ export default function AddLeave(props) {
       const url = 'https://fivecube-ems-backend.herokuapp.com/leaves/leave/';
       const response = await fetch(url);
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
       setLeave(json);
-      console.log('leave', leave);
+      // console.log('leave', leave);
     } catch (error) {
-      console.log('error', error);
+      // console.log('error', error);
     }
   };
     const [employee_name, setName] = useState('');
@@ -29,10 +29,6 @@ export default function AddLeave(props) {
     const [modalIsOpen, setModalIsOpen] = useState(true);
     // dropdown state
     const [dropdown, setDropdown] = useState([])
-
-    const setModalIsOpenToTrue =()=>{
-        setModalIsOpen(true)
-    }
     const setModalIsOpenToFalse =()=>{
       setModalIsOpen(false)
   }
@@ -49,15 +45,12 @@ export default function AddLeave(props) {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log('Success:', data);
+      // console.log('Success:', data);
       setModalIsOpenToFalse()
       props.leaveList(leave)
       props.closeModal(false)
     })
-      console.log('form has been submitted')
-      //     console.log(firstName);
-      //   console.log(lastName);
-            
+    
   }
   
   useEffect(() => {
@@ -67,10 +60,10 @@ export default function AddLeave(props) {
       try {
         const response = await fetch(url);
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         setDropdown(json)
       } catch (error) {
-        console.log("error", error);
+        // console.log("error", error);
       }
     };
 
@@ -80,7 +73,6 @@ export default function AddLeave(props) {
     return (
         <>
         <div className="container mb-3">
-        {/* <Button onClick={setModalIsOpenToTrue} style= {{float:"right"}}>Add Leave</Button> */}
 
         <Modal isOpen={modalIsOpen}>
       <ModalHeader >Modal title</ModalHeader>
@@ -122,10 +114,7 @@ export default function AddLeave(props) {
           <Label for="examplePassword">Description</Label>
           <Input type="textarea"  name="description" onChange={(e) => setDescription(e.target.value)} id="examplePassword"  placeholder="password placeholder"/>
           </Col>
-          {/* <Col sm={4}>
-          <Label for="exampleFile">File</Label>
-          <Input type="file" name="profile_picture" onChange={(e) => setImage(e.target.value)} id="exampleFile" />
-          </Col> */}
+   
         </FormGroup>
         <ModalFooter>
             <Button color="primary" onClick={submitForm}>Submit</Button>{' '}
@@ -137,6 +126,6 @@ export default function AddLeave(props) {
                 
             </Modal>
       </div>
-        </>
+          </>
     )
 }

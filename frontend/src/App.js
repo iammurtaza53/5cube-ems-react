@@ -1,4 +1,4 @@
-import GAListener from 'components/GAListener';
+// import GAListener from 'components/GAListener';
 import { EmptyLayout, LayoutRoute, MainLayout } from 'components/Layout';
 import PageSpinner from 'components/PageSpinner';
 import LoginPage from 'pages/LoginPage';
@@ -40,7 +40,7 @@ class App extends React.Component {
     return (
       
       <BrowserRouter basename={getBasename()}>
-        <GAListener>
+        {/* <GAListener> */}
           <Switch>
             <LayoutRoute
               exact
@@ -89,7 +89,7 @@ class App extends React.Component {
             </MainLayout>
             <Redirect to="/" />
           </Switch>
-        </GAListener>
+        {/* </GAListener> */}
       </BrowserRouter>
     );
   }

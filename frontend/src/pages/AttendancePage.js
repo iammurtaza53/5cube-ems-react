@@ -140,7 +140,7 @@ export default function EmployeePage() {
               <tbody>
                 {employees.map((employee, index) => {
                   console.log('data', employee);
-                  let url = employee.profile_picture_path
+                  let url = ' https://fivecube-ems-backend.herokuapp.com/' + employee.profile_picture_path
                     .split('/')
                     .splice(-2)
                     .join('/');

@@ -1,4 +1,3 @@
-import GAListener from 'components/GAListener';
 import { EmptyLayout, LayoutRoute, MainLayout } from 'components/Layout';
 import PageSpinner from 'components/PageSpinner';
 import LoginPage from 'pages/LoginPage';
@@ -7,28 +6,14 @@ import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import ProtectedRoute from "components/ProtectedRoute"
+import ProtectedRoute from 'components/ProtectedRoute';
 
-// const AlertPage = React.lazy(() => import('pages/AlertPage'));
-// const AuthModalPage = React.lazy(() => import('pages/AuthModalPage'));
-// const BadgePage = React.lazy(() => import('pages/BadgePage'));
-// const ButtonGroupPage = React.lazy(() => import('pages/ButtonGroupPage'));
-// const ButtonPage = React.lazy(() => import('pages/ButtonPage'));
-// const CardPage = React.lazy(() => import('pages/CardPage'));
-// const ChartPage = React.lazy(() => import('pages/ChartPage'));
+
 const EmployeePage = React.lazy(() => import('pages/EmployeePage'));
 const AttendancePage = React.lazy(() => import('pages/AttendancePage'));
 const LeavePage = React.lazy(() => import('pages/LeavePage'));
 const PayrollPage = React.lazy(() => import('pages/PayrollPage'));
 const DashboardPage = React.lazy(() => import('pages/DashboardPage'));
-// const DropdownPage = React.lazy(() => import('pages/DropdownPage'));
-// const FormPage = React.lazy(() => import('pages/FormPage'));
-// const InputGroupPage = React.lazy(() => import('pages/InputGroupPage'));
-// const ModalPage = React.lazy(() => import('pages/ModalPage'));
-// const ProgressPage = React.lazy(() => import('pages/ProgressPage'));
-// const TablePage = React.lazy(() => import('pages/TablePage'));
-// const TypographyPage = React.lazy(() => import('pages/TypographyPage'));
-// const WidgetPage = React.lazy(() => import('pages/WidgetPage'));
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
@@ -36,60 +21,35 @@ const getBasename = () => {
 
 class App extends React.Component {
   render() {
-    const session_token = window.localStorage.getItem('access_token')
     return (
-      
       <BrowserRouter basename={getBasename()}>
-        <GAListener>
-          <Switch>
-            <LayoutRoute
-              exact
-              path="/login"
-              layout={EmptyLayout}
-              component={LoginPage}
-                // <LoginPage {...props} authState={STATE_LOGIN} />             
-            />
-            {/* <LayoutRoute
-              exact
-              path="/signup"
-              layout={EmptyLayout}
-              component={props => (
-                <AuthPage {...props} authState={STATE_SIGNUP} />
-              )}
-            /> */}
+        <Switch>
+          <LayoutRoute
+            exact
+            path="/login"
+            layout={EmptyLayout}
+            component={LoginPage}
+          />
 
-            <MainLayout breakpoint={this.props.breakpoint}>
-              <React.Suspense fallback={<PageSpinner />}>
-              
-                <ProtectedRoute exact path="/" component={DashboardPage} />
-                {/* <Route exact path="/login-modal" component={AuthModalPage} /> */}
-                {/* <Route exact path="/buttons" component={ButtonPage} /> */}
-                {/* <Route exact path="/cards" component={CardPage} /> */}
-                <ProtectedRoute exact path="/employees" component={EmployeePage} />
-                <ProtectedRoute exact path="/attendance" component={AttendancePage} />
-                <ProtectedRoute exact path="/leave" component={LeavePage} />
-                <ProtectedRoute exact path="/payroll" component={PayrollPage} />
-                {/* <Route exact path="/widgets" component={WidgetPage} /> */}
-                {/* <Route exact path="/typography" component={TypographyPage} /> */}
-                {/* <Route exact path="/alerts" component={AlertPage} /> */}
-                {/* <Route exact path="/tables" component={TablePage} /> */}
-                {/* <Route exact path="/badges" component={BadgePage} /> */}
-                {/* <Route
-                  exact
-                  path="/button-groups"
-                  component={ButtonGroupPage}
-                /> */}
-                {/* <Route exact path="/dropdowns" component={DropdownPage} /> */}
-                {/* <Route exact path="/progress" component={ProgressPage} /> */}
-                {/* <Route exact path="/modals" component={ModalPage} /> */}
-                {/* <Route exact path="/forms" component={FormPage} /> */}
-                {/* <Route exact path="/input-groups" component={InputGroupPage} /> */}
-                {/* <Route exact path="/charts" component={ChartPage} /> */}
-              </React.Suspense>
-            </MainLayout>
-            <Redirect to="/" />
-          </Switch>
-        </GAListener>
+          <MainLayout breakpoint={this.props.breakpoint}>
+            <React.Suspense fallback={<PageSpinner />}>
+              <ProtectedRoute exact path="/" component={DashboardPage} />
+              <ProtectedRoute
+                exact
+                path="/employees"
+                component={EmployeePage}
+              />
+              <ProtectedRoute
+                exact
+                path="/attendance"
+                component={AttendancePage}
+              />
+              <ProtectedRoute exact path="/leave" component={LeavePage} />
+              <ProtectedRoute exact path="/payroll" component={PayrollPage} />
+            </React.Suspense>
+          </MainLayout>
+          <Redirect to="/" />
+        </Switch>
       </BrowserRouter>
     );
   }

@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "private": false,
   "proxy": "http://localhost:8000",
-  "homepage": "https://fivecube-ems-frontend.herokuapp.com",
+  "homepage": "",
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^4.3.1",

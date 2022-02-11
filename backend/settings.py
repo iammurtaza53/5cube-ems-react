@@ -123,8 +123,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -151,19 +149,15 @@ JWT_AUTH = {
 # ]
 CORS_ORIGIN_ALLOW_ALL = True
 
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 STATIC_URL = '/static/'
-MEDIA_URL = '/images/'
-# DEFINE THIS FOR STATIC FILES
-# one the below methods can be used to point it to the staic folder
-# STATICFILES_DIRS = [
-#             os.path.join(BASE_DIR,'static')
+MEDIA_URL ='/images/'
 
-#                     ]
-# MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'build/static')
-]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+            os.path.join(BASE_DIR,'static')
+                    ]
+MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
 
 django_heroku.settings(locals())

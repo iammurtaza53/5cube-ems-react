@@ -26,7 +26,7 @@ export default function LeavePage() {
 
   const fetchData = async () => {
     try {
-      const url = 'http://localhost:8000/leaves/leave/';
+      const url = 'https://fivecube-ems-backend.herokuapp.com/leaves/leave/';
       const response = await fetch(url);
       const json = await response.json();
       console.log(json);
@@ -46,7 +46,7 @@ export default function LeavePage() {
     };
 
     fetch(
-      'http://localhost:8000/leaves/leave/' + id + '/',
+      'https://fivecube-ems-backend.herokuapp.com/leaves/leave/' + id + '/',
       requestOptions,
     ).then(() => {
       fetchData();
@@ -62,7 +62,7 @@ export default function LeavePage() {
     };
 
     fetch(
-      'http://localhost:8000/leaves/leave/' + id + '/',
+      'https://fivecube-ems-backend.herokuapp.com/leaves/leave/' + id + '/',
       requestOptions,
     ).then(() => {
       fetchData();

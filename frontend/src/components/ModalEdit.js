@@ -22,7 +22,7 @@ class ModalExample extends React.Component {
   fetchData(){
     var id=this.props.id;
     console.log("iddd",id)
-    fetch('http://127.0.0.1:8000/employee/'+id)
+    fetch('https://fivecube-ems-backend.herokuapp.com/employee/'+id)
     .then(response=>response.json())
     .then((data)=>{
         this.setState({
@@ -52,7 +52,7 @@ componentDidMount(){
 }
 
 submitForm(){
-  fetch('http://127.0.0.1:8000/employees/',
+  fetch('https://fivecube-ems-backend.herokuapp.com/employees/',
   {
     method:'POST',
     body:JSON.stringify(this.state),

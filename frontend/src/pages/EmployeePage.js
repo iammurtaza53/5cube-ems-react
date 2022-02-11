@@ -28,7 +28,7 @@ export default function EmployeePage() {
   }, []);
 
   const fetchData = async () => {
-    const url = 'http://127.0.0.1:8000/employee/employees/';
+    const url = 'https://fivecube-ems-backend.herokuapp.com/employee/employees/';
     try {
       const response = await fetch(url);
       const json = await response.json();
@@ -42,7 +42,7 @@ export default function EmployeePage() {
   };
 
   const handleDelete = id => {
-    fetch('http://127.0.0.1:8000/employee/employees/' + id + '/', {
+    fetch('https://fivecube-ems-backend.herokuapp.com/employee/employees/' + id + '/', {
       method: 'DELETE',
     }).then(() => {
       setEmployees(employees.filter(employee => employee.id !== id));

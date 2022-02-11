@@ -11,7 +11,7 @@ export default function AddLeave(props) {
 
   const fetchData = async () => {
     try {
-      const url = 'http://localhost:8000/leaves/leave/';
+      const url = 'https://fivecube-ems-backend.herokuapp.com/leaves/leave/';
       const response = await fetch(url);
       const json = await response.json();
       console.log(json);
@@ -38,7 +38,7 @@ export default function AddLeave(props) {
   }
 
   const submitForm = () =>{
-    fetch("http://localhost:8000/leaves/leave/",
+    fetch("https://fivecube-ems-backend.herokuapp.com/leaves/leave/",
     {
       method:'POST',
       headers:{
@@ -61,7 +61,7 @@ export default function AddLeave(props) {
   }
   
   useEffect(() => {
-    const url = "http://localhost:8000/leaves/employeeDropdown/";
+    const url = "https://fivecube-ems-backend.herokuapp.com/leaves/employeeDropdown/";
 
     const fetchData = async () => {
       try {

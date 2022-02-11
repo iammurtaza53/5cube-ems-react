@@ -26,7 +26,7 @@ export default function payrollPage() {
   useEffect(() => {
     fetchData();
   }, []);
-  const url = 'http://localhost:8000/payroll/payroll/';
+  const url = 'https://fivecube-ems-backend.herokuapp.com/payroll/payroll/';
 
   const fetchData = async () => {
     try {

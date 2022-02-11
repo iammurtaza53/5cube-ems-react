@@ -21,7 +21,7 @@ export default function AddEmployee(props) {
     fetchData();
   }, []);
   
-  const url = 'http://127.0.0.1:8000/employee/employees/';
+  const url = 'https://fivecube-ems-backend.herokuapp.com/employee/employees/';
 
     const fetchData = async () => {
       try {
@@ -76,7 +76,7 @@ export default function AddEmployee(props) {
       uploadData.append('profile_picture_path', image, image.name);
     }
 
-    fetch('http://127.0.0.1:8000/employee/employees/', {
+    fetch('https://fivecube-ems-backend.herokuapp.com/employee/employees/', {
       method: 'POST',
 
       // headers:{

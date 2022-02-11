@@ -21,7 +21,7 @@ export default function EditPayroll(props) {
 
   
   useEffect(() => {
-    const url = 'http://127.0.0.1:8000/payroll/payroll/';
+    const url = 'https://fivecube-ems-backend.herokuapp.com/payroll/payroll/';
 
     const fetchData = async () => {
       try {
@@ -67,7 +67,7 @@ export default function EditPayroll(props) {
     
     
 
-    fetch('http://localhost:8000/payroll/payroll/' + id + '/', {
+    fetch('https://fivecube-ems-backend.herokuapp.com/payroll/payroll/' + id + '/', {
       method: 'PUT',
 
       // headers:{

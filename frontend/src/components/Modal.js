@@ -31,7 +31,7 @@ class ModalExample extends React.Component {
 }
 
 submitForm(){
-  fetch('http://127.0.0.1:8000/employees/',
+  fetch('https://fivecube-ems-backend.herokuapp.com/employees/',
   {
     method:'POST',
     headers:{

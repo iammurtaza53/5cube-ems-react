@@ -32,7 +32,7 @@ export default function EmployeePage() {
     
     const fetchData = async () => {
       try {
-        const url = 'http://localhost:8000/leaves/employeeDropdown/';
+        const url = 'https://fivecube-ems-backend.herokuapp.com/leaves/employeeDropdown/';
         const response = await fetch(url);
         const json = await response.json();
         console.log(json);
@@ -53,7 +53,7 @@ export default function EmployeePage() {
 
   const fetchData = async () => {
     try {
-      const url = 'http://localhost:8000/attendance/newattendance/';
+      const url = 'https://fivecube-ems-backend.herokuapp.com/attendance/newattendance/';
       const response = await fetch(url);
       const json = await response.json();
       // console.log(json);
@@ -93,7 +93,7 @@ export default function EmployeePage() {
         method: 'POST',
         body: uploadData,
       };
-      fetch('http://localhost:8000/attendance/attendance/', requestOptions)
+      fetch('https://fivecube-ems-backend.herokuapp.com/attendance/attendance/', requestOptions)
         .then(fetchData())
         .catch(error => console.log(error));
     }
@@ -106,7 +106,7 @@ export default function EmployeePage() {
           method: 'PUT',
           body: uploadData,
         };
-        fetch('http://localhost:8000/attendance/attendance/'+id+'/', requestOptions)
+        fetch('https://fivecube-ems-backend.herokuapp.com/attendance/attendance/'+id+'/', requestOptions)
           .then(fetchData())
           .catch(error => console.log(error));
       }

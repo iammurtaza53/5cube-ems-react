@@ -85,7 +85,7 @@ export default function EmployeePage() {
               </thead>
               <tbody>
                 {employees.map((employee, index) => {
-                  let url = employee.profile_picture_path
+                  let url =  employee.profile_picture_path
                     .split('/')
                     .splice(-2)
                     .join('/');

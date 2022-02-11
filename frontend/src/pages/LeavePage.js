@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Card, CardHeader, CardBody, Col,Button} from 'reactstrap';
+import { Table, Card, CardHeader, CardBody, Col, Button } from 'reactstrap';
 import Row from 'reactstrap/lib/Row';
 import { MdCheckCircle, MdClear } from 'react-icons/md';
 import AddLeave from '../components/AddLeave';
 import 'jquery/dist/jquery.min.js';
- 
+import '../styles/App.scss';
 //Datatable Modules
-import "datatables.net-dt/js/dataTables.dataTables"
-import "datatables.net-dt/css/jquery.dataTables.min.css"
-import $ from 'jquery'; 
+import 'datatables.net-dt/js/dataTables.dataTables';
+import 'datatables.net-dt/css/jquery.dataTables.min.css';
+import $ from 'jquery';
 
 export default function LeavePage() {
-       //initialize datatable
-       $(function () {
-        setTimeout(function(){
-        $('#example').DataTable();
-         } ,1000);
-    });
+  //initialize datatable
+  $(function () {
+    setTimeout(function () {
+      $('#example').DataTable();
+    }, 1000);
+  });
   const [leave, setLeave] = useState([]);
-  const [openModal,setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -69,10 +69,6 @@ export default function LeavePage() {
     });
   };
 
- 
-
-
-
   return (
     <>
       <div className="container">
@@ -81,7 +77,12 @@ export default function LeavePage() {
             <h3 className="mb-3">Leaves</h3>
           </Col>
           <Col>
-          <Button onClick={() => setOpenModal(true)} style= {{float:"right"}}>Add Leave</Button>
+            <Button
+              onClick={() => setOpenModal(true)}
+              style={{ float: 'right' }}
+            >
+              Add Leave
+            </Button>
           </Col>
         </Row>
         <Card className="mb-3">
@@ -141,7 +142,9 @@ export default function LeavePage() {
                   );
                 })}
               </tbody>
-              {openModal &&  <AddLeave closeModal={setOpenModal} leaveList={fetchData}/>}
+              {openModal && (
+                <AddLeave closeModal={setOpenModal} leaveList={fetchData} />
+              )}
             </Table>
           </CardBody>
         </Card>

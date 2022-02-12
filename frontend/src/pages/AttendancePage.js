@@ -10,6 +10,7 @@ import Row from 'reactstrap/lib/Row';
 import { MdSend} from 'react-icons/md';
 import 'jquery/dist/jquery.min.js';
 import '../styles/App.scss';
+import userImage from 'assets/user.png';
  
 //Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables"
@@ -148,7 +149,8 @@ export default function EmployeePage() {
                     <tr>
                       <th scope="row">{index + 1}</th>
                       <td>
-                        <img width="80" height="65" src={url} />
+                        {/* <img width="80" height="65" src={url} /> */}
+                        <img width="80" height="65" src={userImage} />
                       </td>
                       <td style={{ textTransform: 'capitalize' }}>
                         {employee.first_name + ' ' + employee.last_name}

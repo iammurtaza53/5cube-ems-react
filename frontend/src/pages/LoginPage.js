@@ -1,5 +1,5 @@
-import React,{useState } from 'react';
-
+import React,{useState} from 'react';
+import { UncontrolledAlert } from 'reactstrap';
 
 import {
   Button,
@@ -13,25 +13,14 @@ import '../App.css';
 export default function Login() {
     const [username, setUsername] = useState([]);
     const [password, setPassword] = useState([]);
-    const [currentUser, setCurrentUser] = useState([]);
+    const [invalidCredentials, setInvalidCredentials] = useState(false);
+
 const handleSubmit = ()=>{
     const uploadData = new FormData();
     uploadData.append('username', username);
     uploadData.append('password', password);
-    const session_token = window.localStorage.getItem('access_token')
-
-    if(session_token){
-        // console.log('your are already logged in')
-        window.location.pathname = "/employees"
-    }
-    
-    else{
-      var users =  fetch('https://fivecube-ems-backend.herokuapp.com/employee/users/')
-      .then(() => {
-        // console.log('usseerr' , users)
-      });
-      // console.log('usseerr' , currentUser)
-      if (currentUser){
+      
+      if (username === 'admin' && password === 'admin123'){
         fetch('https://fivecube-ems-backend.herokuapp.com/token/', {
           method: 'POST',
           body: uploadData,
@@ -39,8 +28,7 @@ const handleSubmit = ()=>{
         .then(response => response.json())
     
           .then(data => {
-            // console.log('Success:', data['access']);
-            // console.log('LoginSuccess');
+            setInvalidCredentials(true);
             window.localStorage.setItem('access_token', data['access'])
             window.location.pathname = "/employees"
           });
@@ -48,16 +36,17 @@ const handleSubmit = ()=>{
       }
 
       else{
-        // console.log('user does not exist')
+        console.log('user does not exist')
         window.location.pathname = "/login"
+        alert('Invalid Credentials')
       }
        
-    }
 }
 
   return (
     <div className="App">
-      <h2>Sign In</h2>
+      <h2>Admin Sign In</h2>
+    
       <Form className="form">
         <FormGroup>
           <Label for="exampleEmail">Username</Label>
@@ -79,7 +68,7 @@ const handleSubmit = ()=>{
             onChange={e => setPassword(e.target.value)}
           />
         </FormGroup>
-        <Button onClick={handleSubmit}>Submit</Button>
+        <Button onClick={handleSubmit}>Login</Button>
       </Form>
     </div>
   );

@@ -95,7 +95,7 @@ export default function EditEmployee(props) {
     <>
       <div className="container mb-3">    
           <Modal isOpen={modalIsOpen}>
-          <ModalHeader>Modal title</ModalHeader>
+          <ModalHeader>Edit Employee</ModalHeader>
           <ModalBody>
             <Form>
               <FormGroup row>

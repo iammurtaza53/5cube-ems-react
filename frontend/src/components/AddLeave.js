@@ -75,7 +75,7 @@ export default function AddLeave(props) {
         <div className="container mb-3">
 
         <Modal isOpen={modalIsOpen}>
-      <ModalHeader >Modal title</ModalHeader>
+      <ModalHeader >Leave Application</ModalHeader>
           <ModalBody>
           <Form >
         <FormGroup row>
@@ -98,21 +98,22 @@ export default function AddLeave(props) {
             <option>Marriage</option>
             <option>Sick</option>
             <option>Casual</option>
+            <option>Tour</option>
             
             </Input>
           </Col>
           <Col sm={6}>
           <Label for="examplePassword">From Date</Label>
-          <Input type="date"  name="from_date" onChange={(e) => setFromDate(e.target.value)} id="examplePassword"  placeholder="password placeholder"/>
+          <Input type="date"  name="from_date" onChange={(e) => setFromDate(e.target.value)} id="examplePassword"  placeholder="To Date"/>
           </Col>
           <Col sm={6}>
           <Label for="examplePassword">To Date</Label>
-          <Input type="date"  name="to_date" onChange={(e) => setToDate(e.target.value)} id="examplePassword"  placeholder="password placeholder" />
+          <Input type="date"  name="to_date" onChange={(e) => setToDate(e.target.value)} id="examplePassword"  placeholder="From Date" />
           </Col>
          
           <Col sm={12}>
           <Label for="examplePassword">Description</Label>
-          <Input type="textarea"  name="description" onChange={(e) => setDescription(e.target.value)} id="examplePassword"  placeholder="password placeholder"/>
+          <Input type="textarea"  name="description" onChange={(e) => setDescription(e.target.value)} id="examplePassword"  placeholder="Add Description"/>
           </Col>
    
         </FormGroup>

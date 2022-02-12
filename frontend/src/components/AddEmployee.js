@@ -90,7 +90,7 @@ export default function AddEmployee(props) {
       <div className="container mb-3">
   
         <Modal isOpen={modalIsOpen}>
-          <ModalHeader>Modal title</ModalHeader>
+          <ModalHeader>Add Employee</ModalHeader>
           <ModalBody>
             <Form>
               <FormGroup row>

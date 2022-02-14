@@ -32,6 +32,13 @@ class AttendanceSerializer(ModelSerializer):
             instance.out_time = validated_data.get('out_time', instance.out_time)
             instance.save()
             return instance
+        else:
+            instance.status = validated_data.get('status',instance.status)
+            instance.in_tine = validated_data.get('in_time',instance.in_time)
+            instance.out_time = validated_data.get('out_time',instance.out_time)
+            instance.save()
+            return instance
+            
            
     def create(self, validated_data):
         # import pdb; pdb.set_trace()

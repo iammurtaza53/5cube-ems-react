@@ -13,6 +13,7 @@ const EmployeePage = React.lazy(() => import('pages/EmployeePage'));
 const AttendancePage = React.lazy(() => import('pages/AttendancePage'));
 const LeavePage = React.lazy(() => import('pages/LeavePage'));
 const PayrollPage = React.lazy(() => import('pages/PayrollPage'));
+const BreakPage = React.lazy(() => import('pages/BreakPage'));
 const DashboardPage = React.lazy(() => import('pages/DashboardPage'));
 
 const getBasename = () => {
@@ -46,6 +47,7 @@ class App extends React.Component {
               />
               <ProtectedRoute exact path="/leave" component={LeavePage} />
               <ProtectedRoute exact path="/payroll" component={PayrollPage} />
+              <ProtectedRoute exact path="/break" component={BreakPage} />
             </React.Suspense>
           </MainLayout>
           <Redirect to="/" />

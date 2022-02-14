@@ -20,7 +20,6 @@ export default function payrollPage() {
   });
 
   const [payroll, setPayroll] = useState([]);
-
   const [openModal, setOpenModal] = useState(false);
   const [payrollObj, setPayrollObj] = useState([]);
 
@@ -33,11 +32,8 @@ export default function payrollPage() {
     try {
       const response = await fetch(url);
       const json = await response.json();
-      // console.log(json);
       setPayroll(json);
-      // console.log('payroll', payroll);
     } catch (error) {
-      // console.log('error', error);
     }
   };
 

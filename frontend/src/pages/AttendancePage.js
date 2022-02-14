@@ -7,10 +7,11 @@ import {
   Col,
 } from 'reactstrap';
 import Row from 'reactstrap/lib/Row';
-import { MdSend} from 'react-icons/md';
+import { MdEdit, MdSend} from 'react-icons/md';
 import 'jquery/dist/jquery.min.js';
 import '../styles/App.scss';
 import userImage from 'assets/user.png';
+import EditAttendance from '../components/EditAttendance';
  
 //Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables"
@@ -27,6 +28,8 @@ export default function EmployeePage() {
   const [employees, setEmployees] = useState([]);
   const [attendance, setAttendance] = useState([]);
   const [currentattendance, setCurrentAttendance] = useState([]);
+  const[attendanceObj, setAttendanceObj] =useState([]);
+  const [openModal, setOpenModal] = useState(false);
   //employee data for table
   useEffect(() => {
     
@@ -35,10 +38,8 @@ export default function EmployeePage() {
         const url = 'https://fivecube-ems-backend.herokuapp.com/leaves/employeeDropdown/';
         const response = await fetch(url);
         const json = await response.json();
-        // console.log(json);
         setEmployees(json);
       } catch (error) {
-        // console.log('error', error);
       }
     };
     fetchData();
@@ -114,6 +115,16 @@ export default function EmployeePage() {
     }
   };
   
+
+  const handleUpdate =(obj) => {
+    setOpenModal(true);
+    // console.log("clicked")
+    setAttendanceObj(obj);
+    console.log(obj,"object here global")
+    console.log(attendanceObj,"object here global")
+  };
+
+
   return (
     <>
       <div className="container">
@@ -135,6 +146,7 @@ export default function EmployeePage() {
                   <th>Time In</th>
                   <th>Time Out</th>
                   <th>Update</th>
+                  <th>Edit</th>
                 </tr>
               </thead>
               <tbody>
@@ -157,7 +169,9 @@ export default function EmployeePage() {
                       </td>
                               {(function() {
                                 let obj = currentattendance.find(x => x.employee === employee.id)
+                                window.obj = obj;
                                 if (obj) {
+                                  
                                   // console.log('presnet')
                                   return (
                                   <>
@@ -180,13 +194,21 @@ export default function EmployeePage() {
                                   >
                                     <MdSend></MdSend>
                                   </button>
-                                    :   <button disabled='true'
+                                    :   <button disabled={true}
                                     className="btn btn-outline-info"
                                     onClick={() => handleAttendaceMark(employee.id)}
                                   >
                                     <MdSend></MdSend>
                                   </button>}
                             
+                      </td>
+                      <td>
+                       <button 
+                          className="btn btn-outline-success"
+                          onClick={() => handleUpdate(obj)}
+                        >
+                          <MdEdit></MdEdit>
+                        </button>
                       </td>
                               </>)
                                   
@@ -208,22 +230,33 @@ export default function EmployeePage() {
                                     <td> - </td>
                                     <td>
                         <button 
-                          className="btn btn-outline-info"
+                          className="btn btn-outline-info" 
                           onClick={() => handleAttendaceMark(employee.id)}
                         >
                           <MdSend></MdSend>
                         </button>
                       </td>
-                                
+                      <td>
+                       <button 
+                          className="btn btn-outline-success" disabled='true'
+                          onClick={() => handleUpdate()}
+                        >
+                          <MdEdit></MdEdit>
+                        </button>
+                      </td>
                                   </>)
                                 }
-                              })()}
-
-                     
+                              })()}                    
                     </tr>
                   );
                 })}
               </tbody>
+              {openModal && (<EditAttendance
+                  closeModal={setOpenModal}
+                  attendance={attendanceObj}
+                  // payrollList={fetchData}
+                />)}
+              
             </Table>
           </CardBody>
         </Card>

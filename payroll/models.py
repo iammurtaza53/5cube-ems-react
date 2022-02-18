@@ -10,8 +10,8 @@ class Payroll (models.Model):
     basic_pay = models.CharField(max_length=300,blank=True,null=True)
     allowance = models.CharField(max_length=300,blank=True,null=True)
     last_increment = models.CharField(max_length=300,blank=True,null=True)
-    last_increment_date = models.DateField(blank=True,null=True)
-    last_salary_release_date = models.DateField(blank=True,null=True)
+    last_increment_date = models.CharField(max_length=300,blank=True,null=True)
+    last_salary_release_date = models.CharField(max_length=300,blank=True,null=True)
     created_at = models.DateTimeField(auto_now_add=True)
    
     

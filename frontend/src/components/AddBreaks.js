@@ -21,7 +21,7 @@ export default function AddBreak(props) {
     fetchData();
   }, []);
   
-  const url = 'http://127.0.0.1:8000/break/break/';
+  const url = 'http://fivecube-ems-backend.herokuapp.com/break/break/';
 
     const fetchData = async () => {
       try {
@@ -51,7 +51,7 @@ export default function AddBreak(props) {
     uploadData.append('start', start);
     uploadData.append('end', end);
 
-    fetch('http://127.0.0.1:8000/break/break/', {
+    fetch('http://fivecube-ems-backend.herokuapp.com/break/break/', {
       method: 'POST',
 
       body: uploadData,

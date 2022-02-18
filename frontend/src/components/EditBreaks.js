@@ -16,7 +16,7 @@ export default function EditBreak(props) {
   const [breaks, setBreaks] = useState([]);
 
   useEffect(() => {
-    const url = 'http://127.0.0.1:8000/break/break/';
+    const url = 'http://fivecube-ems-backend.herokuapp.com/break/break/';
 
     const fetchData = async () => {
       try {
@@ -52,7 +52,7 @@ export default function EditBreak(props) {
     uploadData.append('end', end);
     
     
-    fetch('http://127.0.0.1:8000/break/break/' + id + '/', {
+    fetch('http://fivecube-ems-backend.herokuapp.com/break/break/' + id + '/', {
       method: 'PUT',
 
       body: uploadData,

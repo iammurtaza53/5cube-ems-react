@@ -30,14 +30,14 @@ export default function BreakPage() {
 
   const fetchData = async () => {
     try {
-      const url = 'http://127.0.0.1:8000/break/break/';
+      const url = 'http://fivecube-ems-backend.herokuapp.com/break/break/';
       const response = await fetch(url);
       const json = await response.json();
       // console.log(json);
       setBreaks(json);
-      console.log('breaks', breaks);
+      // console.log('breaks', breaks);
     } catch (error) {
-      console.log('error', error);
+      // console.log('error', error);
     }
   };
 
@@ -46,37 +46,6 @@ export default function BreakPage() {
     setBreakObj(breakObj);
   };
 
-  // // user approve request leave
-  // const handleApprove = id => {
-  //   const requestOptions = {
-  //     method: 'PUT',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({ status: 'Approve' }),
-  //   };
-
-  //   fetch(
-  //     'https://fivecube-ems-backend.herokuapp.com/leaves/leave/' + id + '/',
-  //     requestOptions,
-  //   ).then(() => {
-  //     fetchData();
-  //   });
-  // };
-
-  // user reject request leave
-  // const handleReject = id => {
-  //   const requestOptions = {
-  //     method: 'PUT',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({ status: 'Rejected' }),
-  //   };
-
-  //   fetch(
-  //     'https://fivecube-ems-backend.herokuapp.com/leaves/leave/' + id + '/',
-  //     requestOptions,
-  //   ).then(() => {
-  //     fetchData();
-  //   });
-  // };
 
   return (
     <>
@@ -107,13 +76,6 @@ export default function BreakPage() {
                   <th>End Time</th>
                   <th>Edit</th>
 
-                  {/* <th>Designation</th>
-                  <th>Leave Type</th>
-                  <th>From Date</th>
-                  <th>To Date</th>
-                  <th>Description</th>
-                  <th>Approve</th>
-                  <th>Reject</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -128,20 +90,7 @@ export default function BreakPage() {
                       <td>{breaks.reason}</td>
                       <td>{breaks.start}</td>
                       <td>{breaks.end}</td>
-                      {/* <td>{leave.from_date}</td>
-                      <td>{leave.to_date}</td>
-                      <td>{leave.description}</td> */}
-
-                      {/* <td> */}
-                        
-                        {/* <button
-                          className="btn btn-outline-success"
-                          onClick={() => handleApprove(leave.id)}
-                        >
-                          <MdCheckCircle></MdCheckCircle>
-                        </button> */}
-                        {/* &nbsp;&nbsp;&nbsp; */}
-                      {/* </td> */}
+               
                       <td>
                         <button
                           className="btn btn-outline-primary"
@@ -167,9 +116,7 @@ export default function BreakPage() {
                   breakList={fetchData}
                 />
               )}
-              {/* {openModal && (
-                <AddLeave closeModal={setOpenModal} leaveList={fetchData} />
-              )} */}
+             
             </Table>
           </CardBody>
         </Card>

@@ -2,7 +2,6 @@ from django.db import models
 from employee.models import Employee
 import uuid
 
-
 # Create your models here.
 class Payroll (models.Model):
     id = models.UUIDField(default=uuid.uuid4,unique=True,editable=False,primary_key=True)

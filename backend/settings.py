@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'leave.apps.LeaveConfig',
     'attendance.apps.AttendanceConfig',
     'payroll.apps.PayrollConfig',
+    'breaks.apps.BreaksConfig',
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',

@@ -30,6 +30,7 @@ urlpatterns = [
     path('employee/', include('employee.urls')),
     path('attendance/',include('attendance.urls')),
     path('payroll/',include('payroll.urls')),
+    path('break/',include('breaks.urls')),
     # path('token/', obtain_jwt_token, name='token_obtain_pair'),
     # path(r'user/api-token-auth', obtain_jwt_token),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

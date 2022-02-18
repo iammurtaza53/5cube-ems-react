@@ -132,6 +132,7 @@ export default function EditPayroll(props) {
                     defaultValue= { props.payroll.last_increment}
                     onChange={e => setLastIncrement(e.target.value)}
                     placeholder="Enter Last Increment"
+                    required={false}
                   />
                 </Col>
                 <Col sm={6}>
@@ -142,6 +143,7 @@ export default function EditPayroll(props) {
                     defaultValue= { props.payroll.last_increment_date}
                     onChange={e => setLastIncrementDate(e.target.value)}
                     placeholder="Enter Last Increment Date"
+                    required={false}
                   />
                 </Col>
                 <Col sm={6}>

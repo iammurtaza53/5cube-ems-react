@@ -74,6 +74,7 @@ export default function BreakPage() {
                   <th>Reason</th>
                   <th>Start Time</th>
                   <th>End Time</th>
+                  <th>Date</th>
                   <th>Edit</th>
 
                 </tr>
@@ -90,6 +91,7 @@ export default function BreakPage() {
                       <td>{breaks.reason}</td>
                       <td>{breaks.start}</td>
                       <td>{breaks.end}</td>
+                      <td>{breaks.created_at.split('T')[0]}</td>
                
                       <td>
                         <button

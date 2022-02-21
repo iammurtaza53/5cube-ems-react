@@ -43,6 +43,7 @@ export default function payrollPage() {
         <Card className="mb-3">
           <CardHeader>Report</CardHeader>
           <CardBody>
+         
             <Table hover id="example">
               <thead>
                 <tr>

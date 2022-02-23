@@ -1,19 +1,32 @@
+
 import React, { useEffect, useState } from 'react';
 import { Table, Card, CardHeader, CardBody, Col,Input,Button,InputGroup,InputGroupAddon,InputGroupText} from 'reactstrap';
 import Row from 'reactstrap/lib/Row';
 import 'jquery/dist/jquery.min.js';
 import '../styles/App.scss';
 
+//Datatable Modules
+import 'datatables.net-dt/js/dataTables.dataTables';
+import 'datatables.net-dt/css/jquery.dataTables.min.css';
 import $ from 'jquery';
+
+// import 'jquery-ui/ui/widgets/datepicker';
+// import 'datatables.net-datetime/js/dataTables.dateTime'
+import 'datatables.net-datetime/dist/dataTables.dateTime.min.css'
 import { MdDateRange} from 'react-icons/md';
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import DateTime from 'datatables.net-datetime';
 // import Buttons from 'datatables.net-buttons';
 
 export default function AttendanceReport() {
-  const [attendance, setAttendance] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [attendancePerPage] = useState(4);
 
+  $(function () {
+    setTimeout(function () {
+      $('#example').DataTable();
+    }, 1000);
+  });
+
+ 
+  const [attendance, setAttendance] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -28,12 +41,6 @@ export default function AttendanceReport() {
     } catch (error) {
     }
   };
-
- // Get current posts
- const indexOfLastAttendance = currentPage * attendancePerPage;
- const indexOfFirstAttendance = indexOfLastAttendance - attendancePerPage;
- const currentAttendance = attendance.slice(indexOfFirstAttendance, indexOfLastAttendance);
-
   return (
     <>
       <div className="container">
@@ -42,7 +49,7 @@ export default function AttendanceReport() {
             <h3 className="mb-3">Attendance Report</h3>
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col sm={3} className="my-3">
           <InputGroup>
     <InputGroupAddon addonType="prepend">
@@ -67,9 +74,9 @@ export default function AttendanceReport() {
           <Col sm={2} className="my-3">
           <Button>Filter</Button>
           </Col>
-        </Row>
+        </Row> */}
          
-            <Table hover>
+            <Table hover id="example" className='table table-borderless display nowrap'>
               <thead>
                 <tr>
                   <th>S.No</th>
@@ -81,10 +88,10 @@ export default function AttendanceReport() {
                 </tr>
               </thead>
               <tbody>
-                {currentAttendance.map((attendance, index) => {
-                  // var date = new Date(attendance.created_at)
-                  // console.log(typeof(date.getFullYear()+'-'+(date.getMonth()+1) +'-'+date.getDate()))
-                  // var newdate =date.getFullYear()+'/'+(date.getMonth()+1) +'/'+date.getDate();
+                {attendance.map((attendance, index) => {
+                  var date = new Date(attendance.created_at)
+                  console.log(typeof(date.getFullYear()+'-'+(date.getMonth()+1) +'-'+date.getDate()))
+                  var newdate =date.getFullYear()+'/'+(date.getMonth()+1) +'/'+date.getDate();
                   return (
                     <tr>
                       <th scope="row">{index + 1}</th>
@@ -94,7 +101,7 @@ export default function AttendanceReport() {
                       <td>{attendance.status}</td>
                       <td>{attendance.in_time}</td>
                       <td>{attendance.out_time}</td>
-                      <td>{attendance.created_at}</td>
+                      <td>{newdate}</td>
                       {/* {console.log((new Date(attendance.created_at)))} */}
 
                     </tr>
@@ -103,42 +110,8 @@ export default function AttendanceReport() {
               </tbody>
             
             </Table>
-            {/* <Pagination aria-label="Page navigation example">
-        <PaginationItem>
-          <PaginationLink previous href="#" />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">
-            1
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">
-            3
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">
-            4
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">
-            5
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink next href="#" />
-        </PaginationItem>
-      </Pagination> */}
          
       </div>
     </>
   );
 }
-

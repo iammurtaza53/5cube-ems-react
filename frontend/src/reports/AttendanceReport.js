@@ -4,7 +4,7 @@ import { Table, Card, CardHeader, CardBody, Col,Input,Button,InputGroup,InputGro
 import Row from 'reactstrap/lib/Row';
 import 'jquery/dist/jquery.min.js';
 import '../styles/App.scss';
-
+import { MdDelete} from 'react-icons/md';
 //Datatable Modules
 import 'datatables.net-dt/js/dataTables.dataTables';
 import 'datatables.net-dt/css/jquery.dataTables.min.css';
@@ -40,6 +40,14 @@ export default function AttendanceReport() {
       setAttendance(json);
     } catch (error) {
     }
+  };
+
+  const handleDelete = id => {
+    fetch('https://fivecube-ems-backend.herokuapp.com/attendance/attendance/' + id + '/', {
+      method: 'DELETE',
+    }).then(() => {
+      setAttendance(attendance.filter(attendance => attendance.id !== id));
+    });
   };
   return (
     <>
@@ -85,6 +93,7 @@ export default function AttendanceReport() {
                   <th>In Time</th>
                   <th>Out Time</th>
                   <th>Date</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -100,9 +109,17 @@ export default function AttendanceReport() {
                       </td>
                       <td>{attendance.status}</td>
                       <td>{attendance.in_time}</td>
-                      <td>{attendance.out_time}</td>
+                      <td>{(attendance.out_time?'': attendance.out_time)}</td>
                       <td>{newdate}</td>
                       {/* {console.log((new Date(attendance.created_at)))} */}
+                      <td>
+                        <button
+                          className="btn btn-outline-danger"
+                          onClick={() => handleDelete(attendance.id)}
+                        >
+                          <MdDelete></MdDelete>
+                        </button>
+                      </td>
 
                     </tr>
                   );
@@ -115,5 +132,3 @@ export default function AttendanceReport() {
     </>
   );
 }
-
-

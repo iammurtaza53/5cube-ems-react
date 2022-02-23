@@ -10,6 +10,7 @@ class AttendenceViewSet(viewsets.ModelViewSet):
     
 current_date = date.today()
 print(current_date)    
+
 class EverydayAttendanceViewSet(viewsets.ModelViewSet):
     serializer_class = EverydayAttendanceSerializer
     queryset = Attendance.objects.all().filter(created_at=current_date)

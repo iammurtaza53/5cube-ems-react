@@ -53,7 +53,7 @@ export default function payrollPage() {
         <Card className="mb-3">
           <CardHeader>Payroll</CardHeader>
           <CardBody>
-            <Table hover id="example">
+            <Table hover id="example" className='table table-borderless display wrap'>
               <thead>
                 <tr>
                   <th>S.No</th>

@@ -1,5 +1,6 @@
+
 import React, { useEffect, useState } from 'react';
-import { Table, Card, CardHeader, CardBody, Col} from 'reactstrap';
+import { Table, Card, CardHeader, CardBody, Col,Input,Button,InputGroup,InputGroupAddon,InputGroupText} from 'reactstrap';
 import Row from 'reactstrap/lib/Row';
 import 'jquery/dist/jquery.min.js';
 import '../styles/App.scss';
@@ -9,14 +10,22 @@ import 'datatables.net-dt/js/dataTables.dataTables';
 import 'datatables.net-dt/css/jquery.dataTables.min.css';
 import $ from 'jquery';
 
-export default function payrollPage() {
+// import 'jquery-ui/ui/widgets/datepicker';
+// import 'datatables.net-datetime/js/dataTables.dateTime'
+import 'datatables.net-datetime/dist/dataTables.dateTime.min.css'
+import { MdDateRange} from 'react-icons/md';
+import DateTime from 'datatables.net-datetime';
+// import Buttons from 'datatables.net-buttons';
+
+export default function AttendanceReport() {
+
   $(function () {
     setTimeout(function () {
       $('#example').DataTable();
-     
     }, 1000);
   });
 
+ 
   const [attendance, setAttendance] = useState([]);
 
   useEffect(() => {
@@ -40,11 +49,34 @@ export default function payrollPage() {
             <h3 className="mb-3">Attendance Report</h3>
           </Col>
         </Row>
-        <Card className="mb-3">
-          <CardHeader>Report</CardHeader>
-          <CardBody>
+        {/* <Row>
+          <Col sm={3} className="my-3">
+          <InputGroup>
+    <InputGroupAddon addonType="prepend">
+        <InputGroupText>
+            <MdDateRange />
+        </InputGroupText>
+    </InputGroupAddon>
+              <Input type="text" name="min" id="min" placeholder="To Date" />
+    </InputGroup>
+            
+          </Col>
+          <Col sm={3} className="my-3">
+          <InputGroup>
+    <InputGroupAddon addonType="prepend">
+        <InputGroupText>
+            <MdDateRange />
+        </InputGroupText>
+    </InputGroupAddon>
+              <Input type="text" name="max" id="max" placeholder="From Date" />
+    </InputGroup>
+          </Col>
+          <Col sm={2} className="my-3">
+          <Button>Filter</Button>
+          </Col>
+        </Row> */}
          
-            <Table hover id="example">
+            <Table hover id="example" className='table table-borderless display nowrap'>
               <thead>
                 <tr>
                   <th>S.No</th>
@@ -57,7 +89,9 @@ export default function payrollPage() {
               </thead>
               <tbody>
                 {attendance.map((attendance, index) => {
-               
+                  var date = new Date(attendance.created_at)
+                  console.log(typeof(date.getFullYear()+'-'+(date.getMonth()+1) +'-'+date.getDate()))
+                  var newdate =date.getFullYear()+'/'+(date.getMonth()+1) +'/'+date.getDate();
                   return (
                     <tr>
                       <th scope="row">{index + 1}</th>
@@ -67,7 +101,8 @@ export default function payrollPage() {
                       <td>{attendance.status}</td>
                       <td>{attendance.in_time}</td>
                       <td>{attendance.out_time}</td>
-                      <td>{attendance.created_at}</td>
+                      <td>{newdate}</td>
+                      {/* {console.log((new Date(attendance.created_at)))} */}
 
                     </tr>
                   );
@@ -75,10 +110,10 @@ export default function payrollPage() {
               </tbody>
             
             </Table>
-          </CardBody>
-        </Card>
+         
       </div>
     </>
   );
 }
+
 

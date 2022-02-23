@@ -13,31 +13,11 @@ import {
 } from 'reactstrap';
 
 export default function EditAttendance(props) {
-//   const [payroll, setPayroll] = useState([]);
-
-//   useEffect(() => {
-//     const url = 'https://fivecube-ems-backend.herokuapp.com/payroll/payroll/';
-
-//     const fetchData = async () => {
-//       try {
-//         const response = await fetch(url);
-//         const json = await response.json();
-//         setPayroll(json.results);
-//       } catch (error) {
-//         // console.log('error', error);
-//       }
-//     };
-
-//     fetchData();
-//   }, []);
 
   const [status , setStatus] = useState(props.attendance.status);
   const [in_time, setInTime] = useState(props.attendance.in_time);
   const [out_time, setOutTime] = useState(props.attendance.out_time);
-//   const [allowance, setAllowance] = useState(props.payroll.allowance);
-//   const [last_increment, setLastIncrement] = useState(props.payroll.last_increment);
-//   const [last_increment_date, setLastIncrementDate] = useState(props.payroll.last_increment_date);
-//   const [last_salary_release_date, setLastSalaryReleaseDate] = useState(props.payroll.last_salary_release_date);
+  const [created_at, setCreatedAt] = useState(props.attendance.created_at);
   const [modalIsOpen, setModalIsOpen] = useState(true);
 
   const setModalIsOpenToFalse = () => {
@@ -50,19 +30,19 @@ export default function EditAttendance(props) {
     uploadData.append('status', status);
     uploadData.append('in_time', in_time);
     uploadData.append('out_time', out_time);
+    uploadData.append('created_at', created_at);
    
-    
-    fetch('https://fivecube-ems-backend.herokuapp.com/attendance/attendance/' + id + '/', {
-      method: 'PUT',
+    // fetch('https://fivecube-ems-backend.herokuapp.com/attendance/attendance/' + id + '/', {
+        fetch('http://localhost:8000/attendance/attendance/' + id + '/', {
+ 
+    method: 'PUT',
       body: uploadData,
 })
       .then(response => response.json()
       )
       .then(data => {
-        // console.log('Success:', data);
-        // console.log('data submitted');
+       
         setModalIsOpenToFalse();
-        // props.payrollList(payroll)
         props.closeModal(false)
       });
 
@@ -76,17 +56,9 @@ export default function EditAttendance(props) {
           <ModalBody>
             <Form>
               <FormGroup row>
-                <Col sm={4}>
+                <Col sm={6}>
                   <Label for="exampleEmail">Status</Label>
-                  {/* <Input
-                    type="text"
-                    name="status"
-                    value= { props.attendance.status}
-                    onChange={e => setStatus(e.target.value)}
-                    id="exampleEmail"
-                    placeholder="select"
-                    
-                  /> */}
+                  
                    <Input
                    type='select'
                     name="status"
@@ -99,18 +71,19 @@ export default function EditAttendance(props) {
                     <option value={'off'}>Off</option>
                   </Input>
                 </Col>
-                <Col sm={4}>
+                <Col sm={6}>
                   <Label >In Time</Label>
                   <Input
                     type="text"
                     name="in_time"
                     defaultValue= { props.attendance.in_time}
                     onChange={e => setInTime(e.target.value)}
-                  
+                
                   />
                 </Col>
-
-                <Col sm={4}>
+                  </FormGroup>
+                  <FormGroup row>
+                <Col sm={6}>
                   <Label >Out Time</Label>
                   <Input
                     type="text"
@@ -118,6 +91,15 @@ export default function EditAttendance(props) {
                     defaultValue= { props.attendance.out_time}
                     onChange={e => setOutTime(e.target.value)}
                    
+                  />
+                </Col>
+                <Col sm={6}>
+                  <Label >Date</Label>
+                  <Input
+                    type="text"
+                    name="created_at"
+                    defaultValue= { props.attendance.created_at}
+                    onChange={e => setCreatedAt(e.target.value)}
                   />
                 </Col>
  

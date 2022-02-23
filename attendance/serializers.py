@@ -36,6 +36,7 @@ class AttendanceSerializer(ModelSerializer):
             instance.status = validated_data.get('status',instance.status)
             instance.in_time = validated_data.get('in_time',instance.in_time)
             instance.out_time = validated_data.get('out_time',instance.out_time)
+            instance.created_at = validated_data.get('created_at',instance.created_at)
             instance.save()
             return instance
             

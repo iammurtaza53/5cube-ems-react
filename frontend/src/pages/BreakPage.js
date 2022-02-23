@@ -66,7 +66,7 @@ export default function BreakPage() {
         <Card className="mb-3">
           <CardHeader>Breaks</CardHeader>
           <CardBody>
-            <Table hover id="example">
+            <Table hover id="example" className='table table-borderless display nowrap'>
               <thead>
                 <tr>
                   <th>S.No</th>

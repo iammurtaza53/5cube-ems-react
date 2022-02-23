@@ -75,7 +75,7 @@ export default function EmployeePage() {
         <Card className="mb-3">
           <CardHeader>Employees List</CardHeader>
           <CardBody>
-            <Table hover id="example">
+            <Table hover id="example" className='table table-borderless display nowrap'>
               <thead>
                 <tr>
                   <th>S.No</th>

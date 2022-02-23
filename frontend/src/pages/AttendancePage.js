@@ -94,8 +94,9 @@ export default function EmployeePage() {
         method: 'POST',
         body: uploadData,
       };
-      fetch('https://fivecube-ems-backend.herokuapp.com/attendance/attendance/', requestOptions)
-        .then(fetchData())
+      // fetch('https://fivecube-ems-backend.herokuapp.com/attendance/attendance/', requestOptions)
+    fetch('http://localhost:8000/attendance/attendance/', requestOptions)
+      .then(fetchData())
         .catch(error => console.log(error));
     }
     else{
@@ -107,7 +108,7 @@ export default function EmployeePage() {
           method: 'PUT',
           body: uploadData,
         };
-        fetch('https://fivecube-ems-backend.herokuapp.com/attendance/attendance/'+id+'/', requestOptions)
+        fetch('http://localhost:8000/attendance/attendance/'+id+'/', requestOptions)
           .then(fetchData())
           .catch(error => console.log(error));
       }
@@ -136,7 +137,7 @@ export default function EmployeePage() {
         <Card className="mb-3">
           <CardHeader>Attendance</CardHeader>
           <CardBody>
-            <Table hover id='example'>
+            <Table hover id='example' className='table table-borderless display nowrap'>
               <thead>
                 <tr>
                   <th>S.No</th>

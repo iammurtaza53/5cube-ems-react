@@ -32,8 +32,8 @@ export default function EditAttendance(props) {
     uploadData.append('out_time', out_time);
     uploadData.append('created_at', created_at);
    
-    // fetch('https://fivecube-ems-backend.herokuapp.com/attendance/attendance/' + id + '/', {
-        fetch('http://localhost:8000/attendance/attendance/' + id + '/', {
+    fetch('https://fivecube-ems-backend.herokuapp.com/attendance/attendance/' + id + '/', {
+        // fetch('http://localhost:8000/attendance/attendance/' + id + '/', {
  
     method: 'PUT',
       body: uploadData,

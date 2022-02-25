@@ -104,7 +104,7 @@ function Table({ columns, data }) {
                 setGlobalFilter={setGlobalFilter}
             />
                
-            <table className="table table-hover" {...getTableProps()}>
+            <table style={{margin:'3px 0px 3px 6px'}} className="table table-hover" {...getTableProps()}>
                 <thead style={{justifyContent:'center'}}>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>

@@ -222,7 +222,7 @@ function AttendanceReport() {
                     {
                         Header: 'S.No.',
                         Cell: (row) => {
-                          return <div>{Number(row.row.id) + 1}</div>;
+                          return <div><strong>{Number(row.row.id) + 1}</strong></div>;
                         },
                       },
                     {

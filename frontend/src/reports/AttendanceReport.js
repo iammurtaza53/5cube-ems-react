@@ -47,7 +47,7 @@ function DefaultColumnFilter({
             onChange={e => {
                 setFilter(e.target.value || undefined)
             }}
-            placeholder={`Search ${count} records...`}
+            placeholder='Filter Records'
         />
     )
 }

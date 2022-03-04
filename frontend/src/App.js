@@ -16,6 +16,7 @@ const PayrollPage = React.lazy(() => import('pages/PayrollPage'));
 const BreakPage = React.lazy(() => import('pages/BreakPage'));
 // const DashboardPage = React.lazy(() => import('pages/DashboardPage'));
 const AttendanceReport = React.lazy(() => import('reports/AttendanceReport'));
+const MonthlyRecord = React.lazy(() => import('reports/MonthlyRecord'));
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
@@ -50,6 +51,7 @@ class App extends React.Component {
               <ProtectedRoute exact path="/payroll" component={PayrollPage} />
               <ProtectedRoute exact path="/break" component={BreakPage} />
               <ProtectedRoute exact path="/attendance-report" component={AttendanceReport} />
+              <ProtectedRoute exact path="/monthy-record" component={MonthlyRecord} />
             </React.Suspense>
           </MainLayout>
           <Redirect to="/" />

@@ -14,3 +14,4 @@ class Attendance(models.Model):
     
     def __str__(self):
         return str(self.employee.first_name + " "+str(self.created_at))
+

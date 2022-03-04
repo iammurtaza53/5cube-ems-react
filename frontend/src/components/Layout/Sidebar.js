@@ -10,7 +10,8 @@ import {
   MdViewCarousel,
   MdViewList,
   MdWork,
-  MdKeyboardArrowDown
+  MdKeyboardArrowDown,
+  MdReceipt
 
 } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
@@ -32,7 +33,7 @@ const sidebarBackground = {
 
 const navContents = [
   { to: '/attendance-report', name: 'attendance', exact: false, Icon: MdViewList },
-//   { to: '/tables', name: 'tables', exact: false, Icon: MdStar },
+  { to: '/monthy-record', name: 'monthly record', exact: false, Icon: MdReceipt },
 ];
 
 const navItems = [

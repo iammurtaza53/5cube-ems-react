@@ -9,9 +9,7 @@ import {
   InputGroupText,
 } from 'reactstrap';
 import Row from 'reactstrap/lib/Row';
-import Moment from 'react-moment';
 import moment from 'moment';
-
 
 import '../styles/App.scss';
 
@@ -39,6 +37,7 @@ export default function AttendanceReport() {
     } catch (error) {}
   };
 
+  // max.max = new Date().toISOString().split("T")[0];
   useEffect(() => {
     
     const fetchData = async () => {
@@ -133,7 +132,7 @@ function addTimes (startTime, endTime) {
             <InputGroup>
               <InputGroupAddon addonType="prepend">
                 <InputGroupText>
-                  To
+                  Start
                   {/* <MdDateRange /> */}
                 </InputGroupText>
               </InputGroupAddon>
@@ -143,6 +142,7 @@ function addTimes (startTime, endTime) {
                 name="min"
                 id="min"
                 placeholder="To Date"
+                max={new Date().toISOString().split("T")[0]}
               />
             </InputGroup>
           </Col>
@@ -150,7 +150,7 @@ function addTimes (startTime, endTime) {
             <InputGroup>
               <InputGroupAddon addonType="prepend">
                 <InputGroupText>
-                  From
+                  End
                   {/* <MdDateRange /> */}
                 </InputGroupText>
               </InputGroupAddon>
@@ -160,20 +160,26 @@ function addTimes (startTime, endTime) {
                 name="max"
                 id="max"
                 placeholder="From Date"
+                max={new Date().toISOString().split("T")[0]}
+                
               />
             </InputGroup>
           </Col>
-          <Col sm={2} className="my-3">
+          <Col sm={4} className="my-3">
             <Button onClick={filteredData}>Filter</Button>
           </Col>
+          <Col sm={2} className="my-3">
+           <h6>Total Hours: 207</h6>
+          </Col>
         </Row>
+
 
         <Table>
           <thead>
             <tr>
               <th>S.No</th>
               <th>Name</th>
-              <th>Hours</th>
+              <th>Total Hours</th>
             </tr>
           </thead>
           <tbody>
@@ -187,7 +193,6 @@ function addTimes (startTime, endTime) {
                   <td style={{ textTransform: 'capitalize' }}>
                     {employee.first_name + ' ' + employee.last_name}
                   </td>
-                  {/* <td>{(moment.duration((moment(attendance.in_time,'HH:mm:ss')).diff(moment(attendance.out_time,'HH:mm:ss'))))}</td> */}
                   
                   {(function(){
                     let obj = attendance.filter(x => x.employee === employee.id)
@@ -212,7 +217,6 @@ function addTimes (startTime, endTime) {
                       )
                     }
                   })()}
-                  {/* <td>{totalHours(attendance.in_time,attendance.out_time)}</td> */}
                 </tr>
               );
             })}

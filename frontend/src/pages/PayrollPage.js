@@ -14,7 +14,13 @@ import $ from 'jquery';
 export default function payrollPage() {
   $(function () {
     setTimeout(function () {
-      $('#example').DataTable();
+      $('#example').DataTable(
+        // {
+        //   "bDestroy": true,
+        //   'bFilter': false,
+
+        // }
+      );
      
     }, 1000);
   });

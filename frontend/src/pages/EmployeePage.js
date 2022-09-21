@@ -17,7 +17,13 @@ export default function EmployeePage() {
   //initialize datatable
   $(function () {
     setTimeout(function () {
-      $('#example').DataTable();
+      $('#example').DataTable(
+        // {
+        //   "bDestroy": true,
+        //   'bFilter': false,
+
+        // }
+      );
     }, 1000);
   });
   const [employees, setEmployees] = useState([]);
